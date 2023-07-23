@@ -7,3 +7,21 @@ springdoc:
     disable-swagger-default-url: true
     display-request-duration: true
     operations-sorter: alpha
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-hk6k0.pub-cdb.ntruss.com:3306/swe-DB
+    username: tmdwo928
+    password: tmdwo928@
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
+
+server:
+  port: 8081
