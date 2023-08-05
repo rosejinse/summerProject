@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         // appBar: AppBar(title: const Text(_title)),
-        body: LogIn(),  // 초기화면, LogIn 부분을 수정해서 테스트
+        body: LogInScreen(),  // 초기화면, LogIn 부분을 수정해서 테스트
       ),
     );
   }
