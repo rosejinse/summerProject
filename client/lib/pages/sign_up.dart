@@ -74,3 +74,5 @@ class _SignUpScreen extends State<SignUpScreen> {
     );
   }
 }
+
+// git 계정 테스트 용 주석
