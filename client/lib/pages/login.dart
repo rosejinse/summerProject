@@ -34,20 +34,29 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
 
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
               child: TextField(
                 controller: nameController,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.only(left: 21, top: 14, bottom: 14),
                   hintText: '학교 이메일',
+                  hintStyle: const TextStyle(fontSize: 16),
+                  // border color 적용 위해 enabledBorder 사용
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide: const BorderSide(
-                        color: Color.fromRGBO(0, 94, 184, 1),
-                        width: 0.5,
-                      )
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(0, 94, 184, 1),
+                      width: 0.5,
+                    ),
                   ),
-                  contentPadding: const EdgeInsets.only(
-                      left: 21, top: 14, bottom: 14),
+                  // focus 상태에서도 border color 적용
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(0, 94, 184, 1),
+                      width: 0.5,
+                    ),
+                  ),
                 ),
                 textInputAction: TextInputAction.next,
                 onSubmitted: (_) => FocusScope.of(context).nextFocus(),
@@ -55,20 +64,30 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
 
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 13),
+              padding: const EdgeInsets.fromLTRB(10, 5, 10, 13),
               child: TextField(
                 obscureText: true,
                 controller: passwordController,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.only(left: 21, top: 14, bottom: 14),
                   hintText: '비밀번호',
+                  hintStyle: const TextStyle(fontSize: 16),
+                  // border color 적용 위해 enabledBorder 사용
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide: const BorderSide(
-                          color: Color.fromRGBO(0, 94, 184, 1),
-                          width: 0.5)
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(0, 94, 184, 1),
+                      width: 0.5,
+                    ),
                   ),
-                  contentPadding: const EdgeInsets.only(
-                      left: 21, top: 14, bottom: 14),
+                  // focus 상태에서도 border color 적용
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(0, 94, 184, 1),
+                      width: 0.5,
+                    ),
+                  ),
                 ),
                 textInputAction: TextInputAction.next,
                 onSubmitted: (_) => FocusScope.of(context).nextFocus(),
