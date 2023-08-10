@@ -1,3 +1,0 @@
-# summerProject
-hi
-test commit

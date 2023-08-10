@@ -1,22 +1,69 @@
-import 'package:client/pages/login.dart';
 import 'package:flutter/material.dart';
 
-
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Summer Project';
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(),
+            body: ListView(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(2),
+                  child: Row(
+                    children: [
+                      Icon(Icons.account_circle),
+                      Text('홍길동')
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.account_circle),
+                    Text('홍길동')
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.account_circle),
+                    Text('홍길동')
+                  ],
+                )
+              ],
+            ),
+          bottomNavigationBar: BottomBar(),
+        )
+    );
+  }
+}
+
+class BottomBar extends StatelessWidget {
+  const BottomBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: _title,
-      home: Scaffold(
-        // appBar: AppBar(title: const Text(_title)),
-        body: LogIn(),  // 초기화면, LogIn 부분을 수정해서 테스트
+    return BottomAppBar(
+      child: Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(Icons.call),
+              Icon(Icons.message),
+              Icon(Icons.person_search),
+            ],
+          )
+
       ),
     );
   }
 }
+
+
+
