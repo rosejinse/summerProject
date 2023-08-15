@@ -1,3 +1,5 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // controller 만들어서 TextField 값 저장하기
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
                   ),
                   actions: [
                     IconButton(
+                      // 확인 팝업창 띄우기
                         onPressed: (){},
                         icon: Icon(Icons.note_alt_outlined), color: Colors.black,)
                   ],
@@ -82,4 +85,60 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class BoardDialog extends StatelessWidget {
+  const BoardDialog({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      title: Text('게시물'),
+      content: Text('게시물?'),
+      actions: <Widget>[
+        ElevatedButton(
+            onPressed: () => Navigator.pop(context, '아니오'),
+            child: Text('아니오')
+        ),
+        ElevatedButton(
+            onPressed: () => Navigator.pop(context, '예'),
+            child: Text('예')
+        ),
+      ],
+    );
+  }
+}
+
+void showFlutterDialog(BuildContext context){
+  showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0)
+          ),
+          //title: Text('게시물을 등록하시겠습니까?'),
+          content: Text('게시물을 등록하시겠습니까?'),
+          actions: <Widget>[
+            TextButton(
+                onPressed: (){
+                  Navigator.of(context).pop();
+                },
+                child: Text('아니오')
+            ),
+            TextButton(
+                onPressed: (){
+                  Navigator.of(context).pop();
+                },
+                child: Text('예')
+            ),
+          ],
+        );
+      });
+}
+
+
 
