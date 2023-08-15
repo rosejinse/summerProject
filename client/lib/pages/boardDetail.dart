@@ -13,19 +13,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         //resizeToAvoidBottomInset: false,
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppBar(
+        appBar:PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: AppBar(
                   title: Text('게시판',
                       style: TextStyle(fontSize: 17, color: Color(0xff005EB8))),
                   centerTitle: true, // 글자 가운데 정렬
                   backgroundColor: Colors.white,
                 ),
-              ],
-            )),
+            ),
         body: SingleChildScrollView(
           child: Container(
             height: 720,

@@ -12,17 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppBar(
+          preferredSize: Size.fromHeight(60.0),
+          child: AppBar(
                   title: Text('공지사항',
                       style: TextStyle(fontSize: 17, color: Color(0xff005EB8))),
                   centerTitle: true, // 글자 가운데 정렬
                   backgroundColor: Colors.white,
-                ),
-              ],
             )),
         body: Column(
           children: [
