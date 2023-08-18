@@ -115,13 +115,23 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 void main() {
-  runApp(const AlertDialogExampleApp());
+  runApp(const BoardWriteScreen());
 }
 
-class AlertDialogExampleApp extends StatelessWidget {
-  const AlertDialogExampleApp({Key? key}) : super(key: key);
+class BoardWriteScreen extends StatefulWidget {
+  const BoardWriteScreen({Key? key}) : super(key: key);
+
+  @override
+  State<BoardWriteScreen> createState() => _BoardWriteScreenState();
+}
+
+class _BoardWriteScreenState extends State<BoardWriteScreen> {
+  TextEditingController boardTitle = TextEditingController();
+  TextEditingController boardContent = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -143,11 +153,47 @@ class AlertDialogExampleApp extends StatelessWidget {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (BuildContext context) => DialogExample(),
-                        );
+                        if (boardTitle.text.isEmpty && boardContent.text.isEmpty) {
+                          // 안내 메시지로 '제목과 내용을 입력하세요' 띄우기
+                          Fluttertoast.showToast(
+                            msg: "제목과 내용을 입력하세요.",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 2,
+                            backgroundColor: Color(0xffD8D8D8),
+                            textColor: Colors.black,
+                            fontSize: 13,
+                          );
+                        } else if (boardTitle.text.isEmpty) {
+                          // 안내 메시지로 '제목을 입력하세요' 띄우기
+                          Fluttertoast.showToast(
+                            msg: "제목을 입력하세요.",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 2,
+                            backgroundColor: Color(0xffD8D8D8),
+                            textColor: Colors.black,
+                            fontSize: 13,
+                          );
+                        } else if (boardContent.text.isEmpty) {
+                          // 안내 메시지로 '내용을 입력하세요' 띄우기
+                          Fluttertoast.showToast(
+                            msg: "내용을 입력하세요.",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 2,
+                            backgroundColor: Color(0xffD8D8D8),
+                            textColor: Colors.black,
+                            fontSize: 13,
+                          );
+                        } else {
+                          // 정상적으로 모든 입력값이 들어간 경우
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext context) => DialogExample(),
+                          );
+                        }
                       },
                       icon: Icon(Icons.note_alt_outlined),
                       color: Colors.black,
@@ -165,6 +211,7 @@ class AlertDialogExampleApp extends StatelessWidget {
                         margin: EdgeInsets.only(left: 10),
                         width: 370,
                         child: TextField(
+                          controller: boardTitle,
                           decoration: InputDecoration(
                             hintText: '제목',
                           ),
@@ -175,6 +222,7 @@ class AlertDialogExampleApp extends StatelessWidget {
                         width: 370,
                         height: 500,
                         child: TextField(
+                          controller: boardContent,
                           maxLines: null,
                           expands: true,
                           keyboardType: TextInputType.multiline,
@@ -216,7 +264,7 @@ class DialogExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
-      title: const Text('게시물을 등록하시겠습니까?'),
+      title: const Text('게시물을 등록하시겠습니까?', style: TextStyle(fontWeight: FontWeight.w100)),
       actions: <CupertinoDialogAction>[
         CupertinoDialogAction(
           onPressed: () {
